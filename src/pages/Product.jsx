@@ -6,7 +6,7 @@ import RelatedProducts from "../components/RelatedProducts";
 
 const Produc = () => {
   const { productId } = useParams();
-  const { products, currecy, addToCart } = useContext(ShopContext);
+  const { products, currency, addToCart } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
@@ -67,7 +67,8 @@ const Produc = () => {
             <p className="pl-2">(122)</p>
           </div>
           <p className="mt-5 text-3xl font-medium">
-            {currecy} {productData.price}
+            {currency}
+            {productData.price}
           </p>
           <p className="mt-5 text-gray-500 md:w-4/5">
             {productData.description}
@@ -90,7 +91,7 @@ const Produc = () => {
           </div>
           <button
             onClick={() => addToCart(productData._id, size)}
-            className=" bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+            className=" bg-black text-white px-8 py-3 text-sm active:bg-gray-700 hover:scale-95 transition-all duration-500 ease-in-out"
           >
             ADD TO CART
           </button>
@@ -105,10 +106,14 @@ const Produc = () => {
       {/*-------------------Description adn Review Section----------------------*/}
       <div className="mt-20">
         <div className="flex ">
-          <p className="border px-5 py-3 text-sm">Description</p>
-          <p className="border px-5 py-3 text-sm">Reviews (122)</p>
+          <p className="border border-gray-400 px-5 py-3 text-sm">
+            Description
+          </p>
+          <p className="border border-gray-400 px-5 py-3 text-sm">
+            Reviews (122)
+          </p>
         </div>
-        <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500">
+        <div className="flex flex-col gap-4 border border-gray-400 px-6 py-6 text-sm text-gray-500">
           <p>
             Discover the exceptional quality of this product, meticulously
             crafted to elevate your daily experience. Made from premium
