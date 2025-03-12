@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import {
   Home,
   Collection,
@@ -17,10 +17,14 @@ import SearchBar from "./components/SearchBar";
 import { ToastContainer } from "react-toastify";
 
 const App = () => {
+  const location = useLocation();
+
   return (
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
-      <ToastContainer />
-      <Navbar />
+      <ToastContainer position="bottom-right" autoClose={1000} />
+      {location.pathname !== "/login" && location.pathname !== "/register" && (
+        <Navbar />
+      )}
       <SearchBar />
       <Routes>
         <Route path="/" element={<Home />} />
