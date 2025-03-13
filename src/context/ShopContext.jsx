@@ -64,7 +64,7 @@ const ShopContextProvider = ({ children }) => {
             totalCount += cartItems[items][item];
           }
         } catch (error) {
-          //TODO: WHY DO WE USE TRY CATCH?
+          console.log(error.message);
         }
       }
     }
@@ -95,7 +95,7 @@ const ShopContextProvider = ({ children }) => {
     }
   };
 
-  const getCardAmount = () => {
+  const getCartAmount = () => {
     let totalAmount = 0;
     for (const items in cartItems) {
       let itemInfo = products.find((product) => product._id === items);
@@ -122,8 +122,8 @@ const ShopContextProvider = ({ children }) => {
         toast.error(response.data.message);
       }
     } catch (error) {
-      console.log(e.message);
-      toast.error(e.message);
+      console.log(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -138,8 +138,8 @@ const ShopContextProvider = ({ children }) => {
         setCartItems(response.data.cartData);
       }
     } catch (error) {
-      console.log(e.message);
-      toast.error(e.message);
+      console.log(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -155,24 +155,24 @@ const ShopContextProvider = ({ children }) => {
   }, []);
 
   const value = {
-    products,
+    addToCart,
+    backendUrl,
+    cartItems,
     currency,
     delivery_fee,
-    search,
-    setSearch,
-    showSearch,
-    setShowSearch,
-    cartItems,
-    setCartItems,
-    addToCart,
+    getCartAmount,
     getCartCount,
-    updateQuantity,
-    getCardAmount,
-    navigate,
-    backendUrl,
-    token,
-    setToken,
     getUserCart,
+    navigate,
+    products,
+    search,
+    setCartItems,
+    setSearch,
+    setShowSearch,
+    setToken,
+    showSearch,
+    token,
+    updateQuantity,
   };
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;
